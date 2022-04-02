@@ -14,7 +14,7 @@ module.exports = {
   icon: '/icons/logo.png',
 
   // The name of your website. Present alongside your icon.
-  title: "张小航的云",
+  title: "Snoword's Cloud",
 
   // The folder that you are to share publicly with onedrive-vercel-index. Use '/' if you want to share your root folder.
   baseDirectory: '/pub',
