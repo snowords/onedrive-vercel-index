@@ -42,6 +42,7 @@
   "Downloading selected files, refresh page to cancel": "下载选定文件中，刷新页面以取消",
   "Downloading selected files...": "下载选定文件中…",
   "Email": "电子邮件",
+  "Blog": "博客网站",
   "Enter Password": "输入密码",
   "Error storing the token": "存储 token 时出错",
   "Error validating identify, restart": "校验身份出错，需要重新开始",
