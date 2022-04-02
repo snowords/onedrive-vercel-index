@@ -103,8 +103,6 @@ const Navbar = () => {
                 <FontAwesomeIcon icon={['fab', l.name.toLowerCase() as IconName]} />
                 <span className="hidden text-sm font-medium md:inline-block">
                   {
-                    // Append link name comments here to add translations
-                    // t('Weibo')
                     t(l.name)
                   }
                 </span>
@@ -112,7 +110,12 @@ const Navbar = () => {
             ))}
 
           {siteConfig.blogUrl && (
-            <a href={siteConfig.blogUrl} target="_blank" className="flex items-center space-x-2 hover:opacity-80 dark:text-white">
+            <a 
+              href={siteConfig.blogUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center space-x-2 hover:opacity-80 dark:text-white"
+            >
               <FontAwesomeIcon icon="sign-out-alt" />
               <span className="hidden text-sm font-medium md:inline-block">{t('Blog')}</span>
             </a>
