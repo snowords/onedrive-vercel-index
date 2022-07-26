@@ -282,6 +282,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
         }))
 
       if (files.length > 0) {
+        console.log(files)
         setImages(files)
       }
     }
