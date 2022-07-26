@@ -90,22 +90,24 @@ const FolderGridLayout = ({
           {totalGenerating ? (
             <Downloading title={t('Downloading selected files, refresh page to cancel')} style="p-1.5" />
           ) : (
-            <button
-              title={t('Download selected files')}
-              className="cursor-pointer rounded p-1.5 hover:bg-gray-300 disabled:cursor-not-allowed disabled:text-gray-400 disabled:hover:bg-white dark:hover:bg-gray-600 disabled:dark:text-gray-600 disabled:hover:dark:bg-gray-900"
-              disabled={totalSelected === 0}
-              onClick={handleSelectedDownload}
-            >
-              <FontAwesomeIcon icon={['far', 'arrow-alt-circle-down']} size="lg" />
-            </button>
-            <button
-              title={t('View selected files')}
-              className="cursor-pointer rounded p-1.5 hover:bg-gray-300 disabled:cursor-not-allowed disabled:text-gray-400 disabled:hover:bg-white dark:hover:bg-gray-600 disabled:dark:text-gray-600 disabled:hover:dark:bg-gray-900"
-              disabled={totalSelected === 0}
-              onClick={handleSelectedView}
-            >
-              <FontAwesomeIcon icon={['far', 'fa-eye']} size="lg" />
-            </button>
+            <div className='inline-block'>
+              <button
+                title={t('Download selected files')}
+                className="cursor-pointer rounded p-1.5 hover:bg-gray-300 disabled:cursor-not-allowed disabled:text-gray-400 disabled:hover:bg-white dark:hover:bg-gray-600 disabled:dark:text-gray-600 disabled:hover:dark:bg-gray-900"
+                disabled={totalSelected === 0}
+                onClick={handleSelectedDownload}
+              >
+                <FontAwesomeIcon icon={['far', 'arrow-alt-circle-down']} size="lg" />
+              </button>
+              <button
+                title={t('View selected files')}
+                className="cursor-pointer rounded p-1.5 hover:bg-gray-300 disabled:cursor-not-allowed disabled:text-gray-400 disabled:hover:bg-white dark:hover:bg-gray-600 disabled:dark:text-gray-600 disabled:hover:dark:bg-gray-900"
+                disabled={totalSelected === 0}
+                onClick={handleSelectedView}
+              >
+                <FontAwesomeIcon icon={['far', 'copy']} />
+              </button>
+            </div>
           )}
         </div>
       </div>
