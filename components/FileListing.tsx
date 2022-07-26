@@ -37,6 +37,8 @@ import ImagePreview from './previews/ImagePreview'
 import DefaultPreview from './previews/DefaultPreview'
 import { PreviewContainer } from './previews/Containers'
 
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+
 import FolderListLayout from './FolderListLayout'
 import FolderGridLayout from './FolderGridLayout'
 
@@ -153,6 +155,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
   const [folderGenerating, setFolderGenerating] = useState<{
     [key: string]: boolean
   }>({})
+  const [images, setImages] = useState<{ name: string; url: string }[]>([])
 
   const router = useRouter()
   const hashedToken = getStoredToken(router.asPath)
@@ -267,6 +270,21 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
           })
       }
     }
+    // Selected file view
+    const handleSelectedView = () => {
+      const folderName = path.substring(path.lastIndexOf('/') + 1)
+      const folder = folderName ? decodeURIComponent(folderName) : undefined
+      const files = getFiles()
+        .filter(c => selected[c.id])
+        .map(c => ({
+          name: c.name,
+          url: `/api/raw/?path=${path}/${encodeURIComponent(c.name)}${hashedToken ? `&odpt=${hashedToken}` : ''}`,
+        }))
+
+      if (files.length > 0) {
+        setImages(files)
+      }
+    }
 
     // Folder recursive download
     const handleFolderDownload = (path: string, id: string, name?: string) => () => {
@@ -323,6 +341,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
       toggleTotalSelected,
       totalGenerating,
       handleSelectedDownload,
+      handleSelectedView,
       folderGenerating,
       handleFolderDownload,
     }
@@ -330,6 +349,16 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
     return (
       <>
         <Toaster />
+
+        <PhotoProvider>
+          <div className="foo">
+            {images.map((item, index) => (
+              <PhotoView key={index} src={item.url}>
+                <img src={item.url} alt="" />
+              </PhotoView>
+            ))}
+          </div>
+        </PhotoProvider>
 
         {layout.name === 'Grid' ? <FolderGridLayout {...folderProps} /> : <FolderListLayout {...folderProps} />}
 

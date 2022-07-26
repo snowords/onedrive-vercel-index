@@ -42,6 +42,7 @@
     "react-hot-toast": "^2.0.0",
     "react-hotkeys-hook": "^3.4.4",
     "react-markdown": "^8.0.0",
+    "react-photo-view": "^1.2.2",
     "react-reader": "^0.20.4",
     "react-syntax-highlighter": "^15.4.5",
     "react-use-system-theme": "^1.1.1",
